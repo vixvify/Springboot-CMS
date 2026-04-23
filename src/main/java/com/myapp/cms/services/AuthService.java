@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.myapp.cms.entities.User;
 import com.myapp.cms.repositories.AuthRepository;
 
+@Service
 public class AuthService {
     private final AuthRepository authrepository;
 
