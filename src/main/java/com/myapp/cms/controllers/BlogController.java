@@ -16,7 +16,7 @@ import com.myapp.cms.entities.Blog;
 import com.myapp.cms.services.BlogService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/blog")
 public class BlogController {
 
     private final BlogService blogservice;
