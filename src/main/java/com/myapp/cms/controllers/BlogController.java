@@ -1,6 +1,7 @@
 package com.myapp.cms.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,32 +21,32 @@ public class BlogController {
 
     private final BlogService blogservice;
 
-    public BlogController(BlogService blogservice){
+    public BlogController(BlogService blogservice) {
         this.blogservice = blogservice;
     }
 
     @PostMapping
-    public Blog createBlog(@RequestBody Blog blog){
+    public Blog createBlog(@RequestBody Blog blog) {
         return this.blogservice.createBlog(blog);
     }
 
     @GetMapping
-    public List<Blog> getAllblogs(){
+    public List<Blog> getAllblogs() {
         return blogservice.getAllBlogs();
     }
 
     @GetMapping("/{id}")
-    public Blog getBlogById(@PathVariable long id){
+    public Blog getBlogById(@PathVariable UUID id) {
         return blogservice.getBlogById(id);
     }
 
     @PutMapping("/{id}")
-    public Blog updateBlog(@PathVariable long id, @RequestBody Blog blog){
+    public Blog updateBlog(@PathVariable UUID id, @RequestBody Blog blog) {
         return blogservice.updateBlog(id, blog);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBlog(@PathVariable long id){
+    public void deleteBlog(@PathVariable UUID id) {
         blogservice.deleteBlog(id);
     }
 }

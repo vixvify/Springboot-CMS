@@ -1,7 +1,10 @@
 package com.myapp.cms.services;
 
-import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
 import com.myapp.cms.entities.Blog;
 import com.myapp.cms.repositories.BlogRepository;
 
@@ -22,20 +25,20 @@ public class BlogService {
         return blogRepository.findAll();
     }
 
-    public Blog getBlogById(Long id) {
+    public Blog getBlogById(UUID id) {
         return blogRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Blog not found"));
     }
 
-    public Blog updateBlog(Long id, Blog updatedBlog) {
+    public Blog updateBlog(UUID id, Blog updatedBlog) {
         Blog blog = getBlogById(id);
-        blog.setName(updatedBlog.getName());
+        blog.setTitle(updatedBlog.getTitle());
         blog.setContent(updatedBlog.getContent());
         blog.setAuthor(updatedBlog.getAuthor());
         return blogRepository.save(blog);
     }
 
-    public void deleteBlog(Long id) {
+    public void deleteBlog(UUID id) {
         blogRepository.deleteById(id);
     }
 }
